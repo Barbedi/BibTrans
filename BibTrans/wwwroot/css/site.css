@@ -15,4 +15,14 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-image:url(/img//alex-block-PdDBTrkGYLo-unsplash.jpg);
+  background-position:center;
+  background-size:contain;
+}
+.footer{
+    background-color:white;
+    text-align:center;
+}
+.h1{
+    color:whitesmoke;
 }
