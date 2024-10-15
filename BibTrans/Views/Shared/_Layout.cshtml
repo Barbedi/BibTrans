@@ -25,11 +25,16 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li class="nav-iteam">
+                            <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Logowanie</a>
+                        </li>
+                        <li class="nav-iteam">
+                            <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Rerestracja</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <partial name="_LoginPartial" />
     </header>
     <div class="container">
         <main role="main" class="pb-3">
