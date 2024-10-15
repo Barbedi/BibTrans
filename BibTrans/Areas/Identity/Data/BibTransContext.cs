@@ -27,7 +27,6 @@ public class ApplicationUserEntityConfiguration : IEntityTypeConfiguration<BibTr
 {
     public void Configure(EntityTypeBuilder<BibTransUser> builder)
     {
-        builder.Property(x => x.First_name).HasMaxLength(100);
-        builder.Property(x => x.Last_name).HasMaxLength(100);
+      
     }
 }
