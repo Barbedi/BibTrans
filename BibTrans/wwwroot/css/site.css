@@ -1,28 +1,38 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
+
 
 html {
-  position: relative;
-  min-height: 100%;
+    
+    min-height: 100%;
+   
 }
 
-body {
-  margin-bottom: 60px;
-/*  background-image:url(/img//alex-block-PdDBTrkGYLo-unsplash.jpg);
-  background-position:center;
-  background-size:contain;*/
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1; 
+    background-image: url(/img//alex-block-PdDBTrkGYLo-unsplash.jpg);
+    background-position: center;
+    background-size: cover;
+    filter: blur(8px);
 }
-.footer{
-    background-color:white;
-    text-align:center;
+
+.footer {
+    background-color: white;
+    text-align: center;
 }
-.h1{
-    color:whitesmoke;
-}
+
+
+

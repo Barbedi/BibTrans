@@ -20,16 +20,19 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Strona Głowna</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Panel Klienta</a>
                         </li>
-                        <li class="nav-iteam">
-                            <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Logowanie</a>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Kontakt</a>
                         </li>
-                        <li class="nav-iteam">
-                            <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Rerestracja</a>
+                        <li class="nav-item ms-auto">
+                            <a class="nav-link text-light btn btn-sm btn-primary me-2" id="login" asp-area="Identity" asp-page="/Account/Login">Logowanie</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark btn btn-sm btn-outline-primary" id="register" asp-area="Identity" asp-page="/Account/Register">Rejestracja</a>
                         </li>
                     </ul>
                 </div>
