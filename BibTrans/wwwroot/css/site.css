@@ -10,6 +10,7 @@ html {
 
 :root {
     --primary-color: #732002;
+    --alt-color: #400D01;
     --secondary-color: #120DA6;
     --default-white: #FBFBFF;
 }
@@ -38,9 +39,20 @@ main > section {
 }
 
 .btn-primary:hover {
-    background-color: var(--default-white);
+    background-color: var(--alt-color);
+}
+
+.btn-outline-primary {
     color: var(--primary-color) !important;
-    border-color: var(--primary-color);
+    background-color: var(--default-white);
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+}
+
+.btn-outline-primary:hover {
+    color: #fff !important;
+    background-color: var(--alt-color);
+    border-color: transparent;
 }
 
 .link-primary {
