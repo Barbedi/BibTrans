@@ -15,18 +15,8 @@ html {
    
 }
 
-
-.background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1; 
-    background-image: url(/img//alex-block-PdDBTrkGYLo-unsplash.jpg);
-    background-position: center;
-    background-size: cover;
-    filter: blur(8px);
+main > section {
+    padding: 2.5rem 15%;
 }
 
 .footer {
