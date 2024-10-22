@@ -1,13 +1,19 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Rejestracja";
+    ViewData["Title"] = "";
 }
 
 <h1>@ViewData["Title"]</h1>
 
+<link rel="stylesheet" href="~/css/Views/Home/Index1.css" asp-append-version="true" />
+
+<header class=" d-flex align-items-center justify-content-center">
+    <div class="background-overlay"></div>
+    <div class="background"></div>
+    <div class="text-center align-content-md-center">
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-11">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <h2>Utwórz nowe konto.</h2>
             <hr />
@@ -31,6 +37,8 @@
         </form>
     </div>
 </div>
+    </div>
+</header>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

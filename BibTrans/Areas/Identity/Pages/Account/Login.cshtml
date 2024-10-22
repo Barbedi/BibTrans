@@ -42,14 +42,14 @@
                         <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Zaloguj się</button>
                     </div>
                     <div>
-                        <p>
-                            <a id="forgot-password" asp-page="./ForgotPassword">Zapomniałes hasła?</a>
+                        <p >
+                            <a class="link-primary" id="forgot-password" asp-page="./ForgotPassword">Zapomniałes hasła?</a>
                         </p>
                         <p>
-                            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Nie masz konta ? Zarejestruj sie</a>
+                            <a class="link-primary" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Nie masz konta ? Zarejestruj sie</a>
                         </p>
                         <p>
-                            <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Wyśli ponownie potwierdzenie</a>
+                            <a  class="link-primary"id="resend-confirmation" asp-page="./ResendEmailConfirmation">Wyśli ponownie potwierdzenie</a>
                         </p>
                     </div>
                 </form>
