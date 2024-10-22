@@ -71,7 +71,7 @@ section .bottom {
     border-radius: 5px;
     box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.05);
     cursor: pointer;
-    transition: all ease-out 300ms;
+    transition: color ease-out 300ms, background-color ease-out 300ms, box-shadow ease-out 300ms, border-color ease-out 300ms;
     border: 1px solid transparent;
 }
 
