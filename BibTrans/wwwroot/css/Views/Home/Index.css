@@ -1,0 +1,175 @@
+﻿main header {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+}
+
+.background-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: rgba(255, 255, 255, 0.50);
+    backdrop-filter: blur(5px);
+}
+
+.background {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image: url(/img//alex-block-PdDBTrkGYLo-unsplash.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: space-between;
+    gap: 1.72rem;
+}
+
+section .top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.9375rem;
+    align-self: stretch;
+}
+
+section .top p {
+    max-width: 60%;
+}
+
+section .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+.functionalities-list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 0;
+    gap: 0.6rem;
+    margin: 0;
+}
+
+.functionalities-list > li {
+    width: 22rem;
+    height: 2.6875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--default-white);
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: color ease-out 300ms, background-color ease-out 300ms, box-shadow ease-out 300ms, border-color ease-out 300ms;
+    border: 1px solid transparent;
+}
+
+.functionalities-list > li:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background-color: var(--default-white);
+}
+
+.functionalities-list > li:active, 
+.functionalities-list > li.active{
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.functionality-description {
+    padding: 0.5rem;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.94rem;
+}
+
+.functionality-keywords {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 0 1rem;
+}
+
+.keyword {
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    text-align: center;
+}
+
+.scalability-cards {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    gap: 3rem;
+}
+
+.scalability-card {
+    width: 33%;
+    aspect-ratio: 16/14;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+@media screen and (max-width: 1450px) {
+    .functionality-description {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 1320px) {
+    section p,
+    section .top p {
+        max-width: 80%;
+    }
+
+    .functionalities-list {
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        -webkit-justify-content: center;
+        justify-content: center;
+    }
+
+    .functionalities-list > li {
+        width: fit-content !important;
+    }
+
+    section .bottom {
+        flex-direction: column;
+        gap: 1.72rem;
+    }
+
+    .functionality-description {
+        width: 100%;
+        align-items: flex-start;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    section p,
+    section .top p {
+        max-width: 100%;
+    }
+}
