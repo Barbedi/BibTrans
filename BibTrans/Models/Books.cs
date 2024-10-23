@@ -11,7 +11,6 @@ namespace BibTrans.Models
         public bool IsAvailable { get; set; }
         public string Description { get; set; }
 
-        // Zmieniono typ na string
         public string BorrowedBY { get; set; }
 
         [ForeignKey(nameof(BorrowedBY))]
