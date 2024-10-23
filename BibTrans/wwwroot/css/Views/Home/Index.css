@@ -4,6 +4,10 @@
     height: 80vh;
 }
 
+.footer {
+    margin-top: 2.5rem !important;
+}
+
 .background-overlay {
     position: absolute;
     inset: 0;
