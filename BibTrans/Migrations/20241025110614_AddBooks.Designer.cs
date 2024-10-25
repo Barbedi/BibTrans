@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BibTrans.Migrations
 {
     [DbContext(typeof(BibTransContext))]
-    [Migration("20241023230706_AddBooksAutoIncrement")]
-    partial class AddBooksAutoIncrement
+    [Migration("20241025110614_AddBooks")]
+    partial class AddBooks
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -97,10 +97,6 @@ namespace BibTrans.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("BorrowedBY")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -117,8 +113,6 @@ namespace BibTrans.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BorrowedBY");
 
                     b.ToTable("Books");
                 });
@@ -288,17 +282,6 @@ namespace BibTrans.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("BibTrans.Models.Books", b =>
-                {
-                    b.HasOne("BibTrans.Areas.Identity.Data.BibTransUser", "Borrower")
-                        .WithMany()
-                        .HasForeignKey("BorrowedBY")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Borrower");
                 });
 
             modelBuilder.Entity("BibTrans.Models.Borrowing", b =>

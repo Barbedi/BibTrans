@@ -13,6 +13,7 @@ public class BibTransContext : IdentityDbContext<BibTransUser>
         : base(options)
     {
      }
+   
     public DbSet<Books> Books { get; set; }
     public DbSet<Borrowing> Borrowings { get; set; }
 

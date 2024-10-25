@@ -22,8 +22,9 @@ namespace BibTrans.Controllers
         // GET: Books
         public async Task<IActionResult> Index()
         {
-            var bibTransContext = _context.Books.Include(b => b.Borrower);
-            return View(await bibTransContext.ToListAsync());
+            // Oto kontroler, który nie potrzebuje informacji o Borrowerze
+            var booksList = await _context.Books.ToListAsync();
+            return View(booksList);
         }
 
         // GET: Books/Details/5
@@ -34,37 +35,33 @@ namespace BibTrans.Controllers
                 return NotFound();
             }
 
-            var books = await _context.Books
-                .Include(b => b.Borrower)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (books == null)
+            var book = await _context.Books.FindAsync(id);
+            if (book == null)
             {
                 return NotFound();
             }
 
-            return View(books);
+            return View(book);
         }
 
         // GET: Books/Create
         public IActionResult Create()
         {
-            ViewData["BorrowedBY"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
 
         // POST: Books/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,ISBN,IsAvailable,Description,BorrowedBY")] Books books)
+        public async Task<IActionResult> Create([Bind("Id,Title,ISBN,IsAvailable,Description")] Books book)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(books);
+                _context.Add(book);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BorrowedBY"] = new SelectList(_context.Users, "Id", "Id", books.BorrowedBY);
-            return View(books);
+            return View(book);
         }
 
         // GET: Books/Edit/5
@@ -75,23 +72,20 @@ namespace BibTrans.Controllers
                 return NotFound();
             }
 
-            var books = await _context.Books.FindAsync(id);
-            if (books == null)
+            var book = await _context.Books.FindAsync(id);
+            if (book == null)
             {
                 return NotFound();
             }
-            ViewData["BorrowedBY"] = new SelectList(_context.Users, "Id", "Id", books.BorrowedBY);
-            return View(books);
+            return View(book);
         }
 
         // POST: Books/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ISBN,IsAvailable,Description,BorrowedBY")] Books books)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ISBN,IsAvailable,Description")] Books book)
         {
-            if (id != books.Id)
+            if (id != book.Id)
             {
                 return NotFound();
             }
@@ -100,12 +94,12 @@ namespace BibTrans.Controllers
             {
                 try
                 {
-                    _context.Update(books);
+                    _context.Update(book);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BooksExists(books.Id))
+                    if (!BooksExists(book.Id))
                     {
                         return NotFound();
                     }
@@ -116,8 +110,7 @@ namespace BibTrans.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BorrowedBY"] = new SelectList(_context.Users, "Id", "Id", books.BorrowedBY);
-            return View(books);
+            return View(book);
         }
 
         // GET: Books/Delete/5
@@ -128,15 +121,13 @@ namespace BibTrans.Controllers
                 return NotFound();
             }
 
-            var books = await _context.Books
-                .Include(b => b.Borrower)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (books == null)
+            var book = await _context.Books.FindAsync(id);
+            if (book == null)
             {
                 return NotFound();
             }
 
-            return View(books);
+            return View(book);
         }
 
         // POST: Books/Delete/5
@@ -148,19 +139,19 @@ namespace BibTrans.Controllers
             {
                 return Problem("Entity set 'BibTransContext.Books'  is null.");
             }
-            var books = await _context.Books.FindAsync(id);
-            if (books != null)
+            var book = await _context.Books.FindAsync(id);
+            if (book != null)
             {
-                _context.Books.Remove(books);
+                _context.Books.Remove(book);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool BooksExists(int id)
         {
-          return (_context.Books?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Books?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
