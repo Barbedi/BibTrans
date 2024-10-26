@@ -53,7 +53,7 @@ namespace BibTrans.Controllers
         // POST: Books/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,ISBN,IsAvailable,Description")] Books book)
+        public async Task<IActionResult> Create([Bind("Id,Title,Autor,ISBN,IsAvailable,Description")] Books book)
         {
             if (ModelState.IsValid)
             {
