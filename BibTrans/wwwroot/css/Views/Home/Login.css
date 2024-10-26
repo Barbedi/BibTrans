@@ -1,0 +1,26 @@
+﻿main header {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 97px); /* Full viewport height */
+}
+
+.background-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: rgba(255, 255, 255, 0.50);
+    backdrop-filter: blur(5px);
+}
+
+.background {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image: url(/img//alex-block-PdDBTrkGYLo-unsplash.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+form input {
+    margin-bottom: 0.5rem;
+}

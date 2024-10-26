@@ -19,4 +19,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGenerators.Mvc" Version="6.0.18" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\img\Index1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </Content>
+  </ItemGroup>
+
 </Project>

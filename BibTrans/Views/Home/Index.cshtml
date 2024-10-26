@@ -1,9 +1,122 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Strona główna";
 }
 
-<div class="background"></div>
-<div class="text-center align-content-md-center">
-    <h1 class="display-4">Witaj na BibTrans</h1>
-    <p>Strona do zarządzania systemem biblioteki.</p>
-</div>
+<link rel="stylesheet" href="~/css/Views/Home/Index.css" asp-append-version="true" />
+
+<header class="d-flex align-items-center justify-content-center">
+    <div class="background-overlay"></div>
+    <div class="background"></div>
+    <div class="text-center align-content-md-center">
+        <h1 class="display-4">Witaj na BibTrans</h1>
+        <p>Strona do zarządzania systemem biblioteki.</p>
+    </div>
+</header>
+<section class="functionalities">
+    <div class="top">
+        <h2 class="display-6 m-0">Funkcjonalności</h2>
+        <p class="m-0">
+            BibTrans oferuje szereg nowoczesnych funkcji, które ułatwiają
+            codzienną pracę bibliotekarzy i podnoszą jakość obsługi użytkowników.
+            Nasze najważniejsze funkcje to:
+        </p>
+    </div>
+    <div class="bottom">
+        <ul class="functionalities-list">
+            <li class="active" data-functionality="0">Szybkie wybieranie zasobów</li>
+            <li data-functionality="1">Automatyczne powiadomienia o zwrotach</li>
+            <li data-functionality="2">Rezerwacja książek online</li>
+            <li data-functionality="3">Raporty i statystyki</li>
+        </ul>
+        <div class="functionality-description d-flex" data-functionality="0">
+            <div class="functionality-keywords">
+                <div class="keyword">Szybki dostęp</div>
+                <div class="keyword">Precyzyjne wyniki</div>
+                <div class="keyword">Łatwa rezerwacja</div>
+            </div>
+            <p>
+                Funkcja szybkiego wyszukiwania zasobów umożliwia na 
+                sprawne przeglądanie dostępnych książek oferowanych przez 
+                bibliotekę. Dzięki filtrowaniu i sortowaniu użytkownicy 
+                mogą łatwo odnaleźć interesujące ich pozycje.
+            </p>
+        </div>
+        <div class="functionality-description d-none" data-functionality="1">
+            <div class="functionality-keywords">
+                <div class="keyword">Brak opóźnień</div>
+                <div class="keyword">Większa kontrola</div>
+                <div class="keyword">Lepsza organizacja</div>
+            </div>
+            <p>
+                BibTrans automatycznie przypomina użytkownikom o 
+                nadchodzących terminach zwrotu wypożyczonych materiałów. 
+                Powiadomienia będą wysyłane za pośrednictwem wiadomości e-mail.
+            </p>
+        </div>
+        <div class="functionality-description d-none" data-functionality="2">
+            <div class="functionality-keywords">
+                <div class="keyword">Wygoda</div>
+                <div class="keyword">Dostępność</div>
+                <div class="keyword">Brak kolejek</div>
+            </div>
+            <p>
+                Użytkownicy mają możliwość zarezerwowania książek 
+                i innych zasobów bez wychodzenia z domu. Rezerwacja 
+                online pozwala na zajęcie danej pozycji, jeśli jest 
+                obecnie wypożyczona, a użytkownik zostaje automatycznie 
+                powiadomiony, gdy książka wraca do biblioteki i jest 
+                gotowa do odbioru.
+            </p>
+        </div>
+        <div class="functionality-description d-none" data-functionality="3">
+            <div class="functionality-keywords">
+                <div class="keyword">Śledzenie potrzeb użytkowników</div>
+                <div class="keyword">Ulepszone zarządzanie</div>
+                <div class="keyword">Optymalizacja biblioteki</div>
+            </div>
+            <p>
+                Funkcja raportów i statystyk oferuje bibliotekarzom 
+                szczegółowe analizy dotyczące korzystania z zasobów biblioteki. 
+                Bibliotekarze mogą generować raporty na temat najczęściej 
+                wypożyczanych pozycji, ilości aktywnych użytkowników czy opóźnień 
+                w zwrotach. Statystyki pomagają również w zarządzaniu zakupami 
+                nowych pozycji oraz w podejmowaniu decyzji dotyczących 
+                polityki biblioteki.
+            </p>
+        </div>
+    </div>
+</section>
+<section class="scalability">
+    <div class="top">
+        <h2 class="display-6 m-0">Dla kogo?</h2>
+        <p class="m-0">
+            Niezależnie od tego, czy zarządzasz małą lokalną biblioteką, 
+            czy dużą instytucją akademicką, BibTrans dostosowuje się do 
+            Twoich potrzeb. Nasz system jest elastyczny i skalowalny, co 
+            pozwala na jego wykorzystanie w różnych typach bibliotek.
+        </p>
+    </div>
+    <div class="scalability-cards">
+        <div class="scalability-card">
+            Mała biblioteka
+        </div>
+        <div class="scalability-card">
+            Biblioteka publiczna
+        </div>
+        <div class="scalability-card">
+            Biblioteka akademicka
+        </div>
+    </div>
+</section>
+<section class="contact">
+    <div class="top">
+        <h2 class="display-6 m-0">Skontaktuj się z nami</h2>
+        <p>
+            Masz pytania? Chcesz dowiedzieć się więcej o BibTrans? 
+            Skontaktuj się z nami poprzez formularz lub wyślij wiadomość 
+            na adres email: <a href="mailto:kontakt@bibtrans.com" class="link-primary">kontakt@bibtrans.com</a>.
+        </p>
+        <a class="btn btn-primary px-5 py-3" style="font-size: 1.25rem;" asp-area="" asp-controller="Home" asp-action="Privacy">Wyślij wiadomość</a>
+    </div>
+</section>
+<script src="~/js/Views/Home/functionalities.js" asp-append-version="true"></script>
