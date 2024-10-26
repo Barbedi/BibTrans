@@ -4,6 +4,7 @@ using BibTrans.Areas.Identity.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BibTrans.Migrations
 {
     [DbContext(typeof(BibTransContext))]
-    partial class BibTransContextModelSnapshot : ModelSnapshot
+    [Migration("20241023130359_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -95,8 +97,9 @@ namespace BibTrans.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Autor")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("BorrowedBY")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -114,6 +117,8 @@ namespace BibTrans.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BorrowedBY");
 
                     b.ToTable("Books");
                 });
@@ -283,6 +288,17 @@ namespace BibTrans.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("BibTrans.Models.Books", b =>
+                {
+                    b.HasOne("BibTrans.Areas.Identity.Data.BibTransUser", "Borrower")
+                        .WithMany()
+                        .HasForeignKey("BorrowedBY")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Borrower");
                 });
 
             modelBuilder.Entity("BibTrans.Models.Borrowing", b =>
