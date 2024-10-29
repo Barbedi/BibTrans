@@ -1,0 +1,29 @@
+﻿main {
+    padding: 2rem;
+}
+
+.panel-bg {
+    background-color: #F5F6F8;
+    border-radius: 5px;
+    box-shadow: var(--default-shadow);
+}
+
+input[type="text"],
+select {
+    background-color: white;
+    box-shadow: var(--default-shadow);
+    padding: 1rem 0.5rem;
+}
+
+form {
+    padding: 1.2rem;
+}
+
+.form-group {
+    margin-bottom: 0.31rem;
+}
+
+.form-group:last-child {
+    margin-top: 0.88rem;
+    margin-bottom: 0;
+}

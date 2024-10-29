@@ -23,7 +23,6 @@ namespace BibTrans.Areas.Admin.Controllers
         // GET: Books
         public async Task<IActionResult> Index()
         {
-            // Oto kontroler, który nie potrzebuje informacji o Borrowerze
             var booksList = await _context.Books.ToListAsync();
             return View(booksList);
         }
@@ -43,12 +42,6 @@ namespace BibTrans.Areas.Admin.Controllers
             }
 
             return View(book);
-        }
-
-        // GET: Books/Create
-        public IActionResult Create()
-        {
-            return View();
         }
 
         // POST: Books/Create

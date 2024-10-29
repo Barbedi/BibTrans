@@ -1,62 +1,139 @@
 ﻿@model IEnumerable<BibTrans.Models.Books>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Książki";
     Layout = "_AdminLayout";
 }
 
-<h1>Index</h1>
+<link rel="stylesheet" href="~/css/Views/Admin/Books.css" />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Author)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ISBN)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsAvailable)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
+<div class="left-container">
+    <form class="panel-bg container" asp-action="Create" method="post">
+        <h6>Dodaj książkę</h6>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Title" class="control-label">Tytuł</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Author" class="control-label">Autor</label>
+            <input asp-for="Author" class="form-control" />
+            <span asp-validation-for="Author" class=" text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ISBN" class="control-label">ISBN</label>
+            <input asp-for="ISBN" class="form-control" />
+            <span asp-validation-for="ISBN" class="text-danger"></span>
+        </div>
+        <div class="form-group form-check">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" asp-for="IsAvailable" /> @Html.DisplayNameFor(model => model.IsAvailable)
+            </label>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="control-label">Opis</label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Utwórz" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+<div class="right-container panel-bg">
+    <header>
+        <h6>Lista książek</h6>
+        <div>
+            <p>@Html.DisplayNameFor(model => model.Title)</p>
+            <p>@Html.DisplayNameFor(model => model.Author)</p>
+            <p>@Html.DisplayNameFor(model => model.ISBN)</p>
+            <p>@Html.DisplayNameFor(model => model.IsAvailable)</p>
+        </div>
+    </header>
+    <div class="books-list-container">
+        @if (Model.Count() == 0)
+        {
+            <p class="no-data">Brak książek</p>
+        }
+        @foreach(var item in Model)
+        {
+            <div class="book">
+                <div class="book-info">
+                    <p>@Html.DisplayFor(modelItem => item.Title)</p>
+                    <p>@Html.DisplayFor(modelItem => item.Author)</p>
+                    <p>@Html.DisplayFor(modelItem => item.ISBN)</p>
+                    <p>@Html.DisplayFor(modelItem => item.IsAvailable)</p>
+                </div>
+                <div class="book-details">
+                    <div>
+                        <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                        <span class="icon">^</span>
+                    </div>
+                    <div class="book-actions">
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
+                        <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@*<table class="table right-container panel-bg">
+      <thead>
+          <tr>
+              <th>
+                  @Html.DisplayNameFor(model => model.Title)
+              </th>
+              <th>
+                  @Html.DisplayNameFor(model => model.Author)
+              </th>
+              <th>
+                  @Html.DisplayNameFor(model => model.ISBN)
+              </th>
+              <th>
+                  @Html.DisplayNameFor(model => model.IsAvailable)
+              </th>
+              <th>
+                  @Html.DisplayNameFor(model => model.Description)
+              </th>
            
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-                </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ISBN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsAvailable)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
+              <th></th>
+          </tr>
+      </thead>
+      <tbody>
+  @foreach (var item in Model) {
+          <tr>
+              <td>
+                  @Html.DisplayFor(modelItem => item.Title)
+              </td>
+              <td>
+                  @Html.DisplayFor(modelItem => item.Author)
+                  </td>
+              <td>
+                  @Html.DisplayFor(modelItem => item.ISBN)
+              </td>
+              <td>
+                  @Html.DisplayFor(modelItem => item.IsAvailable)
+              </td>
+              <td>
+                  @Html.DisplayFor(modelItem => item.Description)
+              </td>
            
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+              <td>
+                  <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                  <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                  <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+              </td>
+          </tr>
+  }
+      </tbody>
+  </table> *@
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
-    </tbody>
-</table>

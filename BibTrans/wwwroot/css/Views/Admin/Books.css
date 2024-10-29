@@ -1,0 +1,33 @@
+﻿main {
+    width: 100%;
+    display: flex;
+    min-height: calc(100vh - 4rem);
+    gap: 1.2rem;
+}
+
+.left-container {
+    max-width: 30vw;
+    min-width: 20vw;
+}
+
+.right-container {
+    width: 100%;
+    padding: 1.2rem;
+}
+
+.right-container header > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.right-container header p {
+    margin-bottom: 0;
+}
+
+.no-data {
+    width: fit-content;
+    color: #808080;
+    display: block;
+    margin: 2rem auto;
+}
