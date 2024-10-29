@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "_AdminLayout";
 }
 
 <h1>Index</h1>
@@ -16,7 +17,7 @@
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Autor)
+                @Html.DisplayNameFor(model => model.Author)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ISBN)
@@ -38,7 +39,7 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Autor)
+                @Html.DisplayFor(modelItem => item.Author)
                 </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ISBN)

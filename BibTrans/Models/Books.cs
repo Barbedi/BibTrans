@@ -11,7 +11,8 @@ namespace BibTrans.Models
             [Required(ErrorMessage = "Title is required")]
             public string? Title { get; set; }
 
-            public string? Autor { get; set; }
+            [Required(ErrorMessage = "Author is required")]
+            public string? Author { get; set; }
 
         [Required(ErrorMessage = "ISBN is required")]
             public string? ISBN { get; set; }

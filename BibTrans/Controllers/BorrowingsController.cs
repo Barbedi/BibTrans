@@ -10,6 +10,7 @@ using BibTrans.Models;
 
 namespace BibTrans.Controllers
 {
+    [Area("Admin")]
     public class BorrowingsController : Controller
     {
         private readonly BibTransContext _context;
