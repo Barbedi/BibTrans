@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using BibTrans.Areas.Identity.Data;
 using BibTrans.Models;
 
-namespace BibTrans.Controllers
+namespace BibTrans.Areas.Admin.Controllers
 {
-    //[Area("Admin")]
+    [Area("Admin")]
     public class BooksController : Controller
     {
         private readonly BibTransContext _context;
