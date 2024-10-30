@@ -44,19 +44,44 @@ namespace BibTrans.Areas.Admin.Controllers
             return View(book);
         }
 
-        // POST: Books/Create
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var books = await _context.Books.ToListAsync();
+
+            if (books != null)
+            {
+                return Json(new { data = books });
+            }
+            return Json(new { success = false });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var book = await _context.Books.FindAsync(id);
+
+            if (book != null)
+            {
+                return Json(new { data = book });
+            }
+            return Json(new { success = false });
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Autor,ISBN,IsAvailable,Description")] Books book)
+        public async Task<IActionResult> Create([FromBody] Books book)
         {
+            Console.WriteLine("Create book: " + book);
             if (ModelState.IsValid)
             {
                 _context.Add(book);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Json(new { success = true });
             }
-            return View(book);
+            return Json(new { success = false });
         }
+
 
         // GET: Books/Edit/5
         public async Task<IActionResult> Edit(int? id)

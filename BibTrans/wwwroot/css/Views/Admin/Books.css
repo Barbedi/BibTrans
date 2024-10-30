@@ -25,6 +25,48 @@
     margin-bottom: 0;
 }
 
+.book {
+    padding: 1.25rem;
+    box-shadow: var(--default-shadow);
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.book:first-child {
+    margin-top: 0.3rem;
+}
+
+.book {
+    margin-top: 0.62rem;
+}
+
+.book-info {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-align-items: center;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.book-info p {
+    margin-bottom: 0;
+}
+
+.book-details.hidden {
+    display: none;
+}
+
+.book-details > div:first-child {
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-details .icon {
+    cursor: pointer;
+
+}
+
 .no-data {
     width: fit-content;
     color: #808080;

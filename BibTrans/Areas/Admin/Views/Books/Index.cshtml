@@ -2,39 +2,34 @@
 
 @{
     ViewData["Title"] = "Książki";
-    Layout = "_AdminLayout";
 }
 
 <link rel="stylesheet" href="~/css/Views/Admin/Books.css" />
 
-<div class="left-container">
-    <form class="panel-bg container" asp-action="Create" method="post">
+<div class="left-container panel-bg">
+    <form class="panel-bg container add-book-form">
         <h6>Dodaj książkę</h6>
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="Title" class="control-label">Tytuł</label>
-            <input asp-for="Title" class="form-control" />
-            <span asp-validation-for="Title" class="text-danger"></span>
+            <label for="Title" class="control-label">Tytuł</label>
+            <input id="Title" class="form-control" />
         </div>
         <div class="form-group">
-            <label asp-for="Author" class="control-label">Autor</label>
-            <input asp-for="Author" class="form-control" />
-            <span asp-validation-for="Author" class=" text-danger"></span>
+            <label for="Autor" class="control-label">Autor</label>
+            <input id="Autor" class="form-control" />
         </div>
         <div class="form-group">
-            <label asp-for="ISBN" class="control-label">ISBN</label>
-            <input asp-for="ISBN" class="form-control" />
-            <span asp-validation-for="ISBN" class="text-danger"></span>
+            <label for="ISBN" class="control-label">ISBN</label>
+            <input id="ISBN" class="form-control" />
         </div>
         <div class="form-group form-check">
             <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" asp-for="IsAvailable" /> @Html.DisplayNameFor(model => model.IsAvailable)
+                <input type="checkbox" class="form-check-input" id="IsAvailable" /> @Html.DisplayNameFor(model => model.IsAvailable)
             </label>
         </div>
         <div class="form-group">
-            <label asp-for="Description" class="control-label">Opis</label>
-            <textarea asp-for="Description" class="form-control"></textarea>
-            <span asp-validation-for="Description" class="text-danger"></span>
+            <label for="Description" class="control-label">Opis</label>
+            <textarea id="Description" class="form-control"></textarea>
         </div>
         <div class="form-group">
             <input type="submit" value="Utwórz" class="btn btn-primary" />
@@ -46,7 +41,7 @@
         <h6>Lista książek</h6>
         <div>
             <p>@Html.DisplayNameFor(model => model.Title)</p>
-            <p>@Html.DisplayNameFor(model => model.Author)</p>
+            <p>@Html.DisplayNameFor(model => model.Autor)</p>
             <p>@Html.DisplayNameFor(model => model.ISBN)</p>
             <p>@Html.DisplayNameFor(model => model.IsAvailable)</p>
         </div>
@@ -59,16 +54,16 @@
         @foreach(var item in Model)
         {
             <div class="book">
-                <div class="book-info">
+                <div class="book-info" data-bookid="@Html.ValueFor(modelItem => item.Id)">
                     <p>@Html.DisplayFor(modelItem => item.Title)</p>
-                    <p>@Html.DisplayFor(modelItem => item.Author)</p>
+                    <p>@Html.DisplayFor(modelItem => item.Autor)</p>
                     <p>@Html.DisplayFor(modelItem => item.ISBN)</p>
                     <p>@Html.DisplayFor(modelItem => item.IsAvailable)</p>
                 </div>
-                <div class="book-details">
+                <div class="book-details hidden">
                     <div>
                         <p>@Html.DisplayFor(modelItem => item.Description)</p>
-                        <span class="icon">^</span>
+                        <span class="icon" data-bookid="@Html.ValueFor(modelItem => item.Id)">^</span>
                     </div>
                     <div class="book-actions">
                         <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
@@ -80,58 +75,36 @@
         }
     </div>
 </div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/Views/Admin/book.js"></script>
+<script>
+    function Add() {
+        const book = {
+            Title: $('#Title').val(),
+            Autor: $('#Autor').val(),
+            ISBN: $('#ISBN').val(),
+            IsAvailable: $('#IsAvailable').val(),
+            Description: $('#Description').val()
+        };
 
+        console.log(JSON.stringify(book));
 
-@*<table class="table right-container panel-bg">
-      <thead>
-          <tr>
-              <th>
-                  @Html.DisplayNameFor(model => model.Title)
-              </th>
-              <th>
-                  @Html.DisplayNameFor(model => model.Author)
-              </th>
-              <th>
-                  @Html.DisplayNameFor(model => model.ISBN)
-              </th>
-              <th>
-                  @Html.DisplayNameFor(model => model.IsAvailable)
-              </th>
-              <th>
-                  @Html.DisplayNameFor(model => model.Description)
-              </th>
-           
-              <th></th>
-          </tr>
-      </thead>
-      <tbody>
-  @foreach (var item in Model) {
-          <tr>
-              <td>
-                  @Html.DisplayFor(modelItem => item.Title)
-              </td>
-              <td>
-                  @Html.DisplayFor(modelItem => item.Author)
-                  </td>
-              <td>
-                  @Html.DisplayFor(modelItem => item.ISBN)
-              </td>
-              <td>
-                  @Html.DisplayFor(modelItem => item.IsAvailable)
-              </td>
-              <td>
-                  @Html.DisplayFor(modelItem => item.Description)
-              </td>
-           
-              <td>
-                  <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                  <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                  <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-              </td>
-          </tr>
-  }
-      </tbody>
-  </table> *@
+        $.ajax({
+            url: '@Url.Action("Create", "Books")',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(book),
+            success: function (_result) {
+                location.reload();
+            },
+            error: function (errormessage) {
+                console.error("Error:", errormessage);
+                alert("Wystąpił błąd: " + errormessage.responseText);
+            }
+        });
+    }
+</script>
+
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

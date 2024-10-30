@@ -12,11 +12,25 @@ input[type="text"],
 select {
     background-color: white;
     box-shadow: var(--default-shadow);
-    padding: 1rem 0.5rem;
+    padding: 0.5rem;
+}
+
+input[type="submit"] {
+    margin-top: 0.87rem;
+}
+
+.row>* {
+    max-width: 40%;
+}
+
+textarea {
+    resize: both;
+    max-width: 100%;
 }
 
 form {
     padding: 1.2rem;
+    width: 100%;
 }
 
 .form-group {

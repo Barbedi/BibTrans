@@ -13,9 +13,9 @@ namespace BibTrans.Models
         [DisplayName("Tytuł")]
         public string? Title { get; set; }
 
-        [Required(ErrorMessage = "Author is required")]
+        [Required(ErrorMessage = "Autor is required")]
         [DisplayName("Autor")]
-        public string? Author { get; set; }
+        public string? Autor { get; set; }
 
         [Required(ErrorMessage = "ISBN is required")]
         [DisplayName("ISBN")]
