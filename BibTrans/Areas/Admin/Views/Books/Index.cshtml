@@ -7,29 +7,29 @@
 <link rel="stylesheet" href="~/css/Views/Admin/Books.css" />
 
 <div class="left-container panel-bg">
-    <form class="panel-bg container add-book-form">
+    <form class="panel-bg container add-book-form" asp-action="Create" method="post">
         <h6>Dodaj książkę</h6>
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
             <label for="Title" class="control-label">Tytuł</label>
-            <input id="Title" class="form-control" />
+            <input name="Title" class="form-control" />
         </div>
         <div class="form-group">
             <label for="Autor" class="control-label">Autor</label>
-            <input id="Autor" class="form-control" />
+            <input name="Autor" class="form-control" />
         </div>
         <div class="form-group">
             <label for="ISBN" class="control-label">ISBN</label>
-            <input id="ISBN" class="form-control" />
+            <input name="ISBN" class="form-control" />
         </div>
         <div class="form-group form-check">
             <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" id="IsAvailable" /> @Html.DisplayNameFor(model => model.IsAvailable)
+                <input type="checkbox" class="form-check-input" name="IsAvailable" value="false" onchange="this.value=this.checked" /> @Html.DisplayNameFor(model => model.IsAvailable)
             </label>
         </div>
         <div class="form-group">
             <label for="Description" class="control-label">Opis</label>
-            <textarea id="Description" class="form-control"></textarea>
+            <textarea name="Description" class="form-control"></textarea>
         </div>
         <div class="form-group">
             <input type="submit" value="Utwórz" class="btn btn-primary" />
@@ -77,33 +77,6 @@
 </div>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/js/Views/Admin/book.js"></script>
-<script>
-    function Add() {
-        const book = {
-            Title: $('#Title').val(),
-            Autor: $('#Autor').val(),
-            ISBN: $('#ISBN').val(),
-            IsAvailable: $('#IsAvailable').val(),
-            Description: $('#Description').val()
-        };
-
-        console.log(JSON.stringify(book));
-
-        $.ajax({
-            url: '@Url.Action("Create", "Books")',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify(book),
-            success: function (_result) {
-                location.reload();
-            },
-            error: function (errormessage) {
-                console.error("Error:", errormessage);
-                alert("Wystąpił błąd: " + errormessage.responseText);
-            }
-        });
-    }
-</script>
 
 @section Scripts {
     @{

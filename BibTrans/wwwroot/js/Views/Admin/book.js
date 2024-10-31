@@ -16,8 +16,3 @@ icons.forEach((icon) => {
         details.classList.add("hidden");
     });
 });
-
-document.querySelector(".add-book-form").addEventListener("submit", (event) => {
-    event.preventDefault();
-    Add();
-});

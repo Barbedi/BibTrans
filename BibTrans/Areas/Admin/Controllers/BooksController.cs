@@ -44,42 +44,21 @@ namespace BibTrans.Areas.Admin.Controllers
             return View(book);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
-        {
-            var books = await _context.Books.ToListAsync();
-
-            if (books != null)
-            {
-                return Json(new { data = books });
-            }
-            return Json(new { success = false });
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> GetById(int id)
-        {
-            var book = await _context.Books.FindAsync(id);
-
-            if (book != null)
-            {
-                return Json(new { data = book });
-            }
-            return Json(new { success = false });
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([FromBody] Books book)
+        public async Task<IActionResult> Create([FromForm] Books book)
         {
-            Console.WriteLine("Create book: " + book);
-            if (ModelState.IsValid)
+            System.Diagnostics.Debug.WriteLine($"Dodawanie książki: {book.Id},{book.Title},{book.Autor},{book.ISBN},{book.IsAvailable},{book.Description}");
+
+            if (!ModelState.IsValid)
             {
-                _context.Add(book);
-                await _context.SaveChangesAsync();
-                return Json(new { success = true });
+                System.Diagnostics.Debug.WriteLine("Wystąpił błąd przy dodawaniu");
+                return RedirectToAction("Index");
             }
-            return Json(new { success = false });
+
+            _context.Add(book);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
 
 
