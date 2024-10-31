@@ -63,12 +63,12 @@
                 <div class="book-details hidden">
                     <div>
                         <p>@Html.DisplayFor(modelItem => item.Description)</p>
-                        <span class="icon" data-bookid="@Html.ValueFor(modelItem => item.Id)">^</span>
+                        <span class="icon" data-bookid="@Html.ValueFor(modelItem => item.Id)"><i class="fa-solid fa-angle-up"></i></span>
                     </div>
                     <div class="book-actions">
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
-                        <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
+                        <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.Id">Szczegóły</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
                     </div>
                 </div>
             </div>
@@ -77,6 +77,7 @@
 </div>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/js/Views/Admin/book.js"></script>
+<script src="https://kit.fontawesome.com/32373b1277.js" crossorigin="anonymous"></script>
 
 @section Scripts {
     @{

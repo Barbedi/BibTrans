@@ -16,9 +16,11 @@
 }
 
 .right-container header > div {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) 0.35fr auto;
+    -webkit-align-items: center;
     align-items: center;
-    justify-content: space-between;
+    gap: 1.2rem;
 }
 
 .right-container header p {
@@ -26,31 +28,33 @@
 }
 
 .book {
-    padding: 1.25rem;
     box-shadow: var(--default-shadow);
     border-radius: 5px;
     background-color: #fff;
+    margin-top: 0.62rem;
 }
 
 .book:first-child {
     margin-top: 0.3rem;
 }
 
-.book {
-    margin-top: 0.62rem;
-}
-
 .book-info {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) 0.5fr auto;
     -webkit-align-items: center;
     align-items: center;
-    justify-content: space-between;
     cursor: pointer;
+    padding: 1.25rem;
+    gap: 1.2rem;
 }
 
 .book-info p {
     margin-bottom: 0;
+}
+
+.book-details {
+    padding: 1.25rem;
+    border-top: 1px solid #808080;
 }
 
 .book-details.hidden {
@@ -64,7 +68,24 @@
 
 .book-details .icon {
     cursor: pointer;
+    align-self: center;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem;
+    border: 1px solid transparent;
+    transition: color 300ms ease-out, background-color 300ms ease-out, box-shadow 300ms ease-out, border-color 300ms ease-out;
+}
 
+.book-details .icon:hover {
+    color: var(--primary-color);
+    background-color: var(--default-white);
+    box-shadow: var(--default-shadow);
+    border-color: var(--primary-color);
 }
 
 .no-data {
