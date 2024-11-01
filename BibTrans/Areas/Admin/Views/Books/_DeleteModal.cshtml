@@ -1,0 +1,24 @@
+﻿<div>
+    <h1>Usuwanie</h1>
+    <h3>Czy na pewno chcesz usunąć tę książkę? @ViewData["ChosenId"]</h3>
+    <button class="btn btn-danger">Usuń</button>
+    <button class="btn btn-outline-primary">Anuluj</button>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".btn.btn-danger").click(function () {
+            const bookId = @ViewData["ChosenId"];
+            $.ajax({
+                url: "/Admin/Books/Delete",
+                type: "DELETE",
+                data: { id: bookId },
+                success: function (data) {
+                    window.location.href = "/Admin/Books/Index";
+                }
+            });
+        });
+        $(".btn.btn-outline-primary").click(function () {
+            window.location.href = "/Admin/Books/Index";
+        });
+    });
+</script>

@@ -108,31 +108,13 @@ namespace BibTrans.Areas.Admin.Controllers
             return View(book);
         }
 
-        // GET: Books/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Books == null)
-            {
-                return NotFound();
-            }
-
-            var book = await _context.Books.FindAsync(id);
-            if (book == null)
-            {
-                return NotFound();
-            }
-
-            return View(book);
-        }
-
-        // POST: Books/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpDelete, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed([FromBody] int id)
         {
             if (_context.Books == null)
             {
-                return Problem("Entity set 'BibTransContext.Books'  is null.");
+                return Problem("Entity set 'BibTransContext.Books' is null.");
             }
             var book = await _context.Books.FindAsync(id);
             if (book != null)
