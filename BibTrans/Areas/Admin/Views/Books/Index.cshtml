@@ -6,35 +6,10 @@
 
 <link rel="stylesheet" href="~/css/Views/Admin/Books.css" />
 
-<div class="left-container panel-bg">
-    <form class="panel-bg container add-book-form" asp-action="Create" method="post">
-        <h6>Dodaj książkę</h6>
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label for="Title" class="control-label">Tytuł</label>
-            <input name="Title" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="Autor" class="control-label">Autor</label>
-            <input name="Autor" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="ISBN" class="control-label">ISBN</label>
-            <input name="ISBN" class="form-control" />
-        </div>
-        <div class="form-group form-check">
-            <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" name="IsAvailable" value="false" onchange="this.value=this.checked" /> @Html.DisplayNameFor(model => model.IsAvailable)
-            </label>
-        </div>
-        <div class="form-group">
-            <label for="Description" class="control-label">Opis</label>
-            <textarea name="Description" class="form-control"></textarea>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Utwórz" class="btn btn-primary" />
-        </div>
-    </form>
+<div class="left-container">
+    @{
+        await Html.RenderPartialAsync("_CreateFormPartial");
+    }
 </div>
 <div class="right-container panel-bg">
     <header>

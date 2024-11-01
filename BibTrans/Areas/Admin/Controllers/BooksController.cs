@@ -48,11 +48,8 @@ namespace BibTrans.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([FromForm] Books book)
         {
-            System.Diagnostics.Debug.WriteLine($"Dodawanie książki: {book.Id},{book.Title},{book.Autor},{book.ISBN},{book.IsAvailable},{book.Description}");
-
             if (!ModelState.IsValid)
             {
-                System.Diagnostics.Debug.WriteLine("Wystąpił błąd przy dodawaniu");
                 return RedirectToAction("Index");
             }
 
