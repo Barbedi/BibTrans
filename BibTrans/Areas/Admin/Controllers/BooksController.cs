@@ -110,7 +110,7 @@ namespace BibTrans.Areas.Admin.Controllers
 
         [HttpDelete, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed([FromBody] int id)
+        public async Task<IActionResult> DeleteConfirmed([FromForm] int id)
         {
             if (_context.Books == null)
             {
@@ -124,6 +124,15 @@ namespace BibTrans.Areas.Admin.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public IActionResult SetChosenId([FromForm] int id)
+        {
+            ViewData["ChosenId"] = id;
+
+            return RedirectToAction("Index");
         }
 
         private bool BooksExists(int id)

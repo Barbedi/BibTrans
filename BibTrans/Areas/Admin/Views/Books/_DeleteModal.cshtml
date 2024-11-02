@@ -7,12 +7,12 @@
 <script>
     $(document).ready(function () {
         $(".btn.btn-danger").click(function () {
-            const bookId = @ViewData["ChosenId"];
+            const bookId = parseInt(@Html.Raw(ViewData["ChosenId"]));
             $.ajax({
                 url: "/Admin/Books/Delete",
                 type: "DELETE",
-                data: { id: bookId },
-                success: function (data) {
+                data: `id=${bookId}`,
+                success: () => {
                     window.location.href = "/Admin/Books/Index";
                 }
             });
