@@ -5,7 +5,7 @@ namespace BibTrans.Models
 {
     public class Books
     {
-        
+
         [Key]
         public int Id { get; set; }
 
@@ -27,7 +27,7 @@ namespace BibTrans.Models
         [Required(ErrorMessage = "Opis jest wymagany")]
         [DisplayName("Opis")]
         public string? Description { get; set; }
-        
+
 
     }
 }
