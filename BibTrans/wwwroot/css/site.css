@@ -17,6 +17,7 @@ html {
     --secondary-alt-color: #0E0B73;
     --bs-body-font-family: 'Open Sans', sans-serif;
     --alt-color: #400D01;
+    --default-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.05);
 }
 
 html {
@@ -25,6 +26,10 @@ html {
 
 main > section {
     padding: 2.5rem 10%;
+}
+
+.navbar {
+    box-shadow: var(--default-shadow);
 }
 
 .footer {

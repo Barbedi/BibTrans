@@ -8,8 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using BibTrans.Areas.Identity.Data;
 using BibTrans.Models;
 
-namespace BibTrans.Controllers
+namespace BibTrans.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class BorrowingsController : Controller
     {
         private readonly BibTransContext _context;
@@ -161,14 +162,14 @@ namespace BibTrans.Controllers
             {
                 _context.Borrowings.Remove(borrowing);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool BorrowingExists(int id)
         {
-          return (_context.Borrowings?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Borrowings?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

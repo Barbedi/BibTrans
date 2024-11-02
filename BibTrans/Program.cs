@@ -11,7 +11,12 @@ builder.Services.AddDefaultIdentity<BibTransUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<BibTransContext>();
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+.AddJsonOptions(options =>
+{
+    // A property naming policy, or null to leave property names unchanged.
+    options.JsonSerializerOptions.PropertyNamingPolicy = null;
+});
 
 var app = builder.Build();
 
@@ -26,6 +31,10 @@ app.UseRouting();
 app.UseAuthentication();;
 
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "Admin",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",

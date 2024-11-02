@@ -8,8 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using BibTrans.Areas.Identity.Data;
 using BibTrans.Models;
 
-namespace BibTrans.Controllers
+namespace BibTrans.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class BooksController : Controller
     {
         private readonly BibTransContext _context;
@@ -22,7 +23,6 @@ namespace BibTrans.Controllers
         // GET: Books
         public async Task<IActionResult> Index()
         {
-            // Oto kontroler, który nie potrzebuje informacji o Borrowerze
             var booksList = await _context.Books.ToListAsync();
             return View(booksList);
         }
@@ -44,25 +44,20 @@ namespace BibTrans.Controllers
             return View(book);
         }
 
-        // GET: Books/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Books/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Autor,ISBN,IsAvailable,Description")] Books book)
+        public async Task<IActionResult> Create([FromForm] Books book)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Add(book);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }
-            return View(book);
+
+            _context.Add(book);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
+
 
         // GET: Books/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -113,31 +108,13 @@ namespace BibTrans.Controllers
             return View(book);
         }
 
-        // GET: Books/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Books == null)
-            {
-                return NotFound();
-            }
-
-            var book = await _context.Books.FindAsync(id);
-            if (book == null)
-            {
-                return NotFound();
-            }
-
-            return View(book);
-        }
-
-        // POST: Books/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             if (_context.Books == null)
             {
-                return Problem("Entity set 'BibTransContext.Books'  is null.");
+                return Problem("Entity set 'BibTransContext.Books' is null.");
             }
             var book = await _context.Books.FindAsync(id);
             if (book != null)
@@ -147,6 +124,18 @@ namespace BibTrans.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteModal([FromRoute] int id)
+        {
+            var book = await _context.Books.FindAsync(id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+
+            return PartialView("_DeleteModal", book);
         }
 
         private bool BooksExists(int id)

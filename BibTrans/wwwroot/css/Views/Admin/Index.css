@@ -1,0 +1,43 @@
+﻿main {
+    padding: 2rem;
+}
+
+.panel-bg {
+    background-color: #F5F6F8;
+    border-radius: 5px;
+    box-shadow: var(--default-shadow);
+}
+
+input[type="text"],
+select {
+    background-color: white;
+    box-shadow: var(--default-shadow);
+    padding: 0.5rem;
+}
+
+input[type="submit"] {
+    margin-top: 0.87rem;
+}
+
+.row>* {
+    max-width: 40%;
+}
+
+textarea {
+    resize: both;
+    max-width: 100%;
+}
+
+form {
+    padding: 1.2rem;
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 0.31rem;
+}
+
+.form-group:last-child {
+    margin-top: 0.88rem;
+    margin-bottom: 0;
+}
