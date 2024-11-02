@@ -108,7 +108,7 @@ namespace BibTrans.Areas.Admin.Controllers
             return View(book);
         }
 
-        [HttpDelete]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
@@ -127,7 +127,7 @@ namespace BibTrans.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetDeleteModal([FromRoute] int id)
+        public async Task<IActionResult> DeleteModal([FromRoute] int id)
         {
             var book = await _context.Books.FindAsync(id);
             if (book == null)
@@ -135,7 +135,7 @@ namespace BibTrans.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            return PartialView(book);
+            return PartialView("_DeleteModal", book);
         }
 
         private bool BooksExists(int id)

@@ -43,25 +43,17 @@
                     <div class="book-actions">
                         <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
                         <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.Id">Szczegóły</a>
-                        <a class="btn btn-danger delete-book">Usuń</a>
+                        <a class="btn btn-danger delete-book" data-bookid="@Html.ValueFor(modelItem => item.Id)">Usuń</a>
                     </div>
                 </div>
             </div>
         }
     </div>
 </div>
-<div id="delete-modal"></div>
+<div class="modal-wrapper"></div>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/js/Views/Admin/book.js"></script>
 <script src="https://kit.fontawesome.com/32373b1277.js" crossorigin="anonymous"></script>
-<script>
-    $(document).ready(function () {
-        $(".delete-book").click(function () {
-            const bookId = $(this).closest(".book-info").data("bookid");
-            $("#delete-modal").load(`/Admin/Books/GetDeleteModal/${bookId}`);
-        });
-    });
-</script>
 
 @section Scripts {
     @{

@@ -16,3 +16,18 @@ icons.forEach((icon) => {
         details.classList.add("hidden");
     });
 });
+
+document.querySelectorAll(".delete-book").forEach((button) => {
+    button.addEventListener("click", (ev) => {
+        const bookId = ev.currentTarget.dataset.bookid;
+
+        $.ajax({
+            url: `Books/DeleteModal/${bookId}`,
+            type: "GET",
+            success: function (response) {
+                $(".modal-wrapper").html(response);
+                $("#deleteModal").modal("show");
+            },
+        });
+    });
+});
