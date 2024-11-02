@@ -78,7 +78,7 @@ namespace BibTrans.Areas.Admin.Controllers
         // POST: Books/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ISBN,IsAvailable,Description")] Books book)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Autor,ISBN,IsAvailable,Description")] Books book)
         {
             if (id != book.Id)
             {
