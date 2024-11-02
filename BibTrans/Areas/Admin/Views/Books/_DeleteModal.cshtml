@@ -1,4 +1,4 @@
-﻿@ViewData["ChosenId"] = Model.Id;
+﻿@model BibTrans.Models.Books
 
 <div class="modal" tabindex="-1 ">
     <div class="modal-backdrop"></div>
@@ -8,30 +8,12 @@
                 <h1>Usuwanie</h1>
             </div>
             <div class="modal-body">
-                <p>Czy na pewno chcesz usunąć tę książkę? @Html.Raw(ViewData["ChosenId"])</p>
+                <p>Czy na pewno chcesz usunąć tę książkę? @Html.ValueFor(model => model.Id)</p>
             </div>
             <div class="modal-footer">
-                <a asp-action="Delete" class="btn btn-danger" asp-route-id="@Html.Raw(ViewData["ChosenId"])">Usuń</a>
+                <a asp-action="Delete" class="btn btn-danger" asp-route-id="@Html.ValueFor(model => model.Id)">Usuń</a>
                 <a asp-action="Index" class="btn btn-outline-primary">Anuluj</a>
             </div>
         </div>
     </div>
 </div>
-@* <script>
-    $(document).ready(function () {
-        $(".btn.btn-danger").click(function () {
-            const bookId = parseInt(@Html.Raw(ViewData["ChosenId"]));
-            $.ajax({
-                url: "/Admin/Books/Delete",
-                type: "DELETE",
-                data: `id=${bookId}`,
-                success: () => {
-                    window.location.href = "/Admin/Books/Index";
-                }
-            });
-        });
-        $(".btn.btn-outline-primary").click(function () {
-            window.location.href = "/Admin/Books/Index";
-        });
-    });
-</script> *@

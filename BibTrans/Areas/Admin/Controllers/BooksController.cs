@@ -108,9 +108,9 @@ namespace BibTrans.Areas.Admin.Controllers
             return View(book);
         }
 
-        [HttpDelete, ActionName("Delete")]
+        [HttpDelete]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed([FromForm] int id)
+        public async Task<IActionResult> Delete(int id)
         {
             if (_context.Books == null)
             {
@@ -126,13 +126,16 @@ namespace BibTrans.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [HttpPost]
-        //[ValidateAntiForgeryToken]
-        public IActionResult SetChosenId([FromForm] int id)
+        [HttpGet]
+        public async Task<IActionResult> GetDeleteModal([FromRoute] int id)
         {
-            ViewData["ChosenId"] = id;
+            var book = await _context.Books.FindAsync(id);
+            if (book == null)
+            {
+                return NotFound();
+            }
 
-            return RedirectToAction("Index");
+            return PartialView(book);
         }
 
         private bool BooksExists(int id)
