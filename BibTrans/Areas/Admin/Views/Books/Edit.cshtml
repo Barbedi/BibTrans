@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form class="panel-bg container" asp-action="Edit" method="post">
+        <form class="panel-bg container" asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
@@ -19,9 +19,9 @@
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Autor" class="control-label">Autor</label>
+                <label asp-for="Autor" class="control-label"></label>
                 <input asp-for="Autor" class="form-control" />
-                <span asp-validation-for="Autor" class="text-danger"></span>
+                <span asp-validation-for="Autor" class=" text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ISBN" class="control-label">ISBN</label>
@@ -30,7 +30,7 @@
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" asp-for="IsAvailable" /> @Html.DisplayNameFor(model => model.IsAvailable)
+                    <input type="checkbox" class="form-check-input" asp-for="IsAvailable" value="false" onchange="this.value=this.checked" /> @Html.DisplayNameFor(model => model.IsAvailable)
                 </label>
             </div>
             <div class="form-group">
@@ -39,48 +39,14 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Utwórz" class="btn btn-primary" />
+                <input type="submit" value="Zapisz" class="btn btn-primary" />
             </div>
         </form>
-        @* <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Author" class="control-label"></label>
-                <input asp-for="Author" class="form-control" />
-                <span asp-validation-for="Author" class=" text-danger"></span>
-
-            </div>
-            <div class="form-group">
-                <label asp-for="ISBN" class="control-label"></label>
-                <input asp-for="ISBN" class="form-control" />
-                <span asp-validation-for="ISBN" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsAvailable" /> @Html.DisplayNameFor(model => model.IsAvailable)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-           
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form> *@
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Wróć do listy</a>
+    <a asp-action="Index">Wróć do listy książek</a>
 </div>
 
 @section Scripts {

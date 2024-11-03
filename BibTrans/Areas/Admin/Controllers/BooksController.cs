@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using BibTrans.Areas.Identity.Data;
+﻿using BibTrans.Areas.Identity.Data;
 using BibTrans.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BibTrans.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class BooksController : Controller
     {
         private readonly BibTransContext _context;
@@ -28,6 +25,7 @@ namespace BibTrans.Areas.Admin.Controllers
         }
 
         // GET: Books/Details/5
+        [Authorize(Roles = "Users")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Books == null)
@@ -78,7 +76,7 @@ namespace BibTrans.Areas.Admin.Controllers
         // POST: Books/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ISBN,IsAvailable,Description")] Books book)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Autor,ISBN,IsAvailable,Description")] Books book)
         {
             if (id != book.Id)
             {

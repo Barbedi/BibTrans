@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BibTrans.Areas.Identity.Data;
+using BibTrans.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using BibTrans.Areas.Identity.Data;
-using BibTrans.Models;
 
 namespace BibTrans.Areas.Admin.Controllers
 {

@@ -5,29 +5,29 @@ namespace BibTrans.Models
 {
     public class Books
     {
-        
+
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Title is required")]
+        [Required(ErrorMessage = "Tytuł jest wymagany")]
         [DisplayName("Tytuł")]
         public string? Title { get; set; }
 
-        [Required(ErrorMessage = "Autor is required")]
+        [Required(ErrorMessage = "Autor jest wymagany")]
         [DisplayName("Autor")]
         public string? Autor { get; set; }
 
-        [Required(ErrorMessage = "ISBN is required")]
+        [Required(ErrorMessage = "Numer ISBN jest wymagany")]
         [DisplayName("ISBN")]
         public string? ISBN { get; set; }
 
         [DisplayName("Dostępność")]
         public bool IsAvailable { get; set; }
 
-        [Required(ErrorMessage = "Description is required")]
+        [Required(ErrorMessage = "Opis jest wymagany")]
         [DisplayName("Opis")]
         public string? Description { get; set; }
-        
+
 
     }
 }
