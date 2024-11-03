@@ -10,10 +10,10 @@ using BibTrans.Models;
 
   namespace BibTrans.Controllers
 {
-    public class Action:Controller
+    public class ActivityLogsController:Controller
     {
         private readonly BibTransContext _context;
-        public Action(BibTransContext context)
+        public ActivityLogsController(BibTransContext context)
         {
             _context = context;
         }

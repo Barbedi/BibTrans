@@ -5,27 +5,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BibTrans.Models
 {
-    public class ActivityLog
+    public class ActivityLogs
     {
         [Key]
         public int Id { get; set; }
 
-        [Required]
         public string? UserId { get; set; }
 
-        [Required]
         public string? Action { get; set; }
 
-        [Required]
-        public string ?Controller { get; set; }
+        public string? Controller { get; set; }
 
-        [Required]
+        [Required] // Data zawsze powinna być ustawiona
         public DateTime TimeStamp { get; set; } = DateTime.Now;
 
-        [Required]
         public string? Description { get; set; }
 
         [ForeignKey("UserId")]
-        public virtual BibTransUser? User { get; set; } // Właściwość nawigacyjna do BibTransUser
+        public virtual BibTransUser? User { get; set; } // Nawigacja do BibTransUser
     }
 }
