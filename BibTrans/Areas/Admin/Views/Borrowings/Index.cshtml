@@ -1,53 +1,77 @@
 ﻿@model IEnumerable<BibTrans.Models.Borrowing>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Historia";
 }
 
-<h1>Index</h1>
+<link rel="stylesheet" href="~/css//Views/Admin/Borrowings.css" />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Book)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BorrowDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ReturnDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Book.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BorrowDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReturnDate)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="search-wrapper">
+    <form class="px-0">
+        <div class="form-group search-input m-0">
+            <label for="searchValue"><i class="fa-solid fa-magnifying-glass"></i> Wyszukaj aktywność/wypożyczenie</label>
+            <input class="form-control" type="search" name="searchValue" />
+        </div>
+        <button class="btn btn-primary" type="submit">Wyszukaj</button>
+    </form>
+</div>
+<div class="content-wrapper">
+    <div class="panel-bg left-container">
+        <h6>Ostanie wypożyczenia</h6>
+        <table>
+            <thead>
+                <tr>
+                    <th>ISBN</th>
+                    <th>Email</th>
+                    <th>Data wypożyczenia</th>
+                    <th>Data zwrotu</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>978-83-611-0112-5</td>
+                    <td>admin123@onet.pl</td>
+                    <td>2024-01-10</td>
+                    <td>2024-01-24</td>
+                </tr>
+                <tr>
+                    <td>978-83-611-0112-5</td>
+                    <td>admin123@onet.pl</td>
+                    <td>2024-01-10</td>
+                    <td>2024-01-24</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-bg right-container">
+        <h6>Ostatnia aktywność</h6>
+        <div class="activity">
+            <div class="top">
+                <p>Typ aktywności</p>
+                <p>Data wykonania</p>
+            </div>
+            <div class="bottom">
+                <p>Szczegóły: Użytkownik {email} wypożyczył {tytuł}</p>
+            </div>
+        </div>
+        <div class="activity">
+            <div class="top">
+                <p>Wypożyczenie książki</p>
+                <p>2024-10-29 12:10</p>
+            </div>
+            <div class="bottom">
+                <p>Użytkownik {email} wypożyczył {tytuł}</p>
+            </div>
+        </div>
+        <div class="activity">
+            <div class="top">
+                <p>Typ aktywności</p>
+                <p>Data wykonania</p>
+            </div>
+            <div class="bottom">
+                <p>Szczegóły: Użytkownik {email} wypożyczył {tytuł}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/Views/Admin/borrowings.js"></script>
