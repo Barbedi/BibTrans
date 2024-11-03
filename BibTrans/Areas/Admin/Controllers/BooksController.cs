@@ -1,11 +1,13 @@
 ﻿using BibTrans.Areas.Identity.Data;
 using BibTrans.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BibTrans.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class BooksController : Controller
     {
         private readonly BibTransContext _context;
@@ -23,6 +25,7 @@ namespace BibTrans.Areas.Admin.Controllers
         }
 
         // GET: Books/Details/5
+        [Authorize(Roles = "Users")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Books == null)

@@ -28,6 +28,10 @@ main > section {
     padding: 2.5rem 10%;
 }
 
+body {
+    min-height: 100vh;
+}
+
 .navbar {
     box-shadow: var(--default-shadow);
 }

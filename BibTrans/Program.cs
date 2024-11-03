@@ -1,4 +1,5 @@
 using BibTrans.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("BibTransContextConnection") ?? throw new InvalidOperationException("Connection string 'BibTransContextConnection' not found.");
@@ -6,8 +7,10 @@ var connectionString = builder.Configuration.GetConnectionString("BibTransContex
 builder.Services.AddDbContext<BibTransContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<BibTransUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<BibTransContext>();
+builder.Services.AddIdentity<BibTransUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<BibTransContext>()
+    .AddDefaultTokenProviders()
+    .AddDefaultUI();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews()
@@ -16,6 +19,8 @@ builder.Services.AddControllersWithViews()
     // A property naming policy, or null to leave property names unchanged.
     options.JsonSerializerOptions.PropertyNamingPolicy = null;
 });
+
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
