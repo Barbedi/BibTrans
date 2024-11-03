@@ -1,0 +1,95 @@
+﻿.search-wrapper form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.7rem;
+}
+
+.search-input {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-input .form-control {
+    background-color: #F5F6F8;
+}
+
+.search-input label {
+    position: absolute;
+    left: 1rem;
+    cursor: text;
+}
+
+.hidden {
+    display: none;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 1rem;
+}
+
+.content-wrapper > * {
+    width: 100%;
+    padding: 2rem;
+}
+
+.left-container table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 0.5rem;
+}
+
+.left-container td,
+.left-container th {
+    padding: 1rem;
+    text-align: center;
+}
+
+.left-container th {
+    font-weight: normal;
+    font-size: 1.1rem;
+    padding-bottom: 0;
+}
+
+.left-container tbody tr {
+    box-shadow: var(--default-shadow);
+    border-radius: 5px;
+}
+
+.left-container td {
+    background-color: #fff;
+}
+
+.left-container td:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.left-container td:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.activity {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: var(--default-shadow);
+    padding: 0.8rem;
+}
+
+.activity:not(:last-of-type) {
+    margin-bottom: 1rem;
+}
+
+.activity p {
+    margin-bottom: 0;
+}
+
+.activity .top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+}

@@ -28,6 +28,11 @@ main > section {
     padding: 2.5rem 10%;
 }
 
+main h6 {
+    font-weight: normal;
+    font-size: 1.25rem;
+}
+
 body {
     min-height: 100vh;
 }
@@ -41,6 +46,13 @@ body {
     text-align: center;
 }
 
+.form-control {
+    border: none;
+    outline: none;
+    box-shadow: var(--default-shadow);
+    border-radius: 5px;
+}
+
 .btn {
     transition: color 300ms ease-out,background-color 300ms ease-out,border-color 300ms ease-out,box-shadow 300ms ease-out;
 }
@@ -48,7 +60,6 @@ body {
 .btn-primary {
     background-color: var(--primary-color);
     color: #ffffff !important;
-    padding: 0.5rem 1rem;
     border-radius: 5px;
     border: 1px solid transparent;
 }
