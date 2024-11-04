@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BibTrans.Migrations
 {
     [DbContext(typeof(BibTransContext))]
-    [Migration("20241023152411_RestoreAspNetUsers")]
-    partial class RestoreAspNetUsers
+    [Migration("20241103160219_12313141231_poprawka")]
+    partial class _12313141231_poprawka
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,6 +42,16 @@ namespace BibTrans.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("First_name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Last_name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -89,6 +99,36 @@ namespace BibTrans.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("BibTrans.Models.ActivityLog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Controller")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("TimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ActivityLogs");
+                });
+
             modelBuilder.Entity("BibTrans.Models.Books", b =>
                 {
                     b.Property<int>("Id")
@@ -97,9 +137,8 @@ namespace BibTrans.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("BorrowedBY")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("Autor")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -117,8 +156,6 @@ namespace BibTrans.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BorrowedBY");
 
                     b.ToTable("Books");
                 });
@@ -290,15 +327,15 @@ namespace BibTrans.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("BibTrans.Models.Books", b =>
+            modelBuilder.Entity("BibTrans.Models.ActivityLog", b =>
                 {
-                    b.HasOne("BibTrans.Areas.Identity.Data.BibTransUser", "Borrower")
+                    b.HasOne("BibTrans.Areas.Identity.Data.BibTransUser", "User")
                         .WithMany()
-                        .HasForeignKey("BorrowedBY")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Borrower");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("BibTrans.Models.Borrowing", b =>

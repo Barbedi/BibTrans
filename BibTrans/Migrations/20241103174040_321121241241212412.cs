@@ -4,7 +4,7 @@
 
 namespace BibTrans.Migrations
 {
-    public partial class UpdateBooks : Migration
+    public partial class _321121241241212412 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
