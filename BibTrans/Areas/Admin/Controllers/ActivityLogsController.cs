@@ -9,9 +9,12 @@ using BibTrans.Areas.Identity.Data;
 using BibTrans.Models;
 using X.PagedList;
 using X.PagedList.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
-namespace BibTrans.Controllers
+namespace BibTrans.Area.Admin.Controllers
 {
+    [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class ActivityLogsController:Controller
     {
         private readonly BibTransContext _context;
@@ -23,7 +26,8 @@ namespace BibTrans.Controllers
         {
             int pageSize = 5;
             int pageNumber = (page ?? 1);
-            var ActiveList = await _context.ActivityLogs.ToListAsync();
+            var ActiveList= await _context.ActivityLogs.OrderByDescending(x => x.Id).ToListAsync();
+
             var ActiveListPaged = ActiveList.ToPagedList(pageNumber, pageSize);
             return View(ActiveListPaged);
         }
