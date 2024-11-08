@@ -8,27 +8,28 @@ namespace BibTrans.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-        name: "Books",
-        columns: table => new
-        {
-            Id = table.Column<int>(type: "int", nullable: false)
-                .Annotation("SqlServer:Identity", "1, 1"),
-            Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-            ISBN = table.Column<string>(type: "nvarchar(max)", nullable: false),
-            IsAvailable = table.Column<bool>(type: "bit", nullable: false),
-            Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-            BorrowedBY = table.Column<string>(type: "nvarchar(max)", nullable: true) // Optional
-        },
-        constraints: table =>
-        {
-            table.PrimaryKey("PK_Books", x => x.Id);
-        });
+            // Check if the Books table already exists
+            migrationBuilder.Sql(@"
+                IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Books]') AND type in (N'U'))
+                BEGIN
+                    CREATE TABLE [Books] (
+                        [Id] int NOT NULL IDENTITY,
+                        [Title] nvarchar(max) NOT NULL,
+                        [Autor] nvarchar(max) NOT NULL,
+                        [ISBN] nvarchar(max) NOT NULL,
+                        [IsAvailable] bit NOT NULL,
+                        [Description] nvarchar(max) NOT NULL,
+                        [BorrowedBY] nvarchar(max) NULL,
+                        CONSTRAINT [PK_Books] PRIMARY KEY ([Id])
+                    );
+                END
+            ");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-           
+            migrationBuilder.DropTable(
+                name: "Books");
         }
     }
 }
