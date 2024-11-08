@@ -15,6 +15,7 @@ namespace BibTrans.Migrations
                     CREATE TABLE [Books] (
                         [Id] int NOT NULL IDENTITY,
                         [Title] nvarchar(max) NOT NULL,
+                        [Autor] nvarchar(max) NOT NULL,
                         [ISBN] nvarchar(max) NOT NULL,
                         [IsAvailable] bit NOT NULL,
                         [Description] nvarchar(max) NOT NULL,
