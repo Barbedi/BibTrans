@@ -9,7 +9,7 @@ namespace BibTrans.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.Sql(@"
-CREATE TRIGGER trg_AfterBookInsert
+CREATE OR ALTER TRIGGER trg_AfterBookInsert
 ON dbo.Books
 AFTER INSERT
 AS
@@ -30,7 +30,7 @@ END;
 ");
 
             migrationBuilder.Sql(@"
-CREATE TRIGGER trg_AfterBookDelete
+CREATE OR ALTER TRIGGER trg_AfterBookDelete
 ON dbo.Books
 AFTER DELETE
 AS
@@ -49,7 +49,7 @@ BEGIN
 END;
 ");
             migrationBuilder.Sql(@"
-CREATE TRIGGER trg_AfterBookUpdate
+CREATE OR ALTER TRIGGER trg_AfterBookUpdate
 ON dbo.Books
 AFTER UPDATE
 AS
