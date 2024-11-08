@@ -22,28 +22,16 @@
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Books" asp-action="Index">Książki</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Borrowings" asp-action="Index">Historia</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Books" asp-action="Index">Raporty</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="ActivityLogs" asp-action="Index">Logi</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Books" asp-action="Create">Wiadomości</a>
-                            </li>
-                            <li class="nav-item ms-auto">
-                                <a class="nav-link text-light btn btn-sm btn-primary me-2" id="login" asp-area="Identity" asp-page="/Account/Logout">Wyloguj</a>
-                            </li>
-                        </ul>
-                    </div>
+                    @{
+                        if (ViewContext.RouteData.Values["area"]?.ToString() == "Admin")
+                        {
+                            await Html.RenderPartialAsync("_AdminNav");
+                        }
+                        else
+                        {
+                            await Html.RenderPartialAsync("_ClientNav");
+                        }
+                    }
                 </div>
             </nav>
         </header>

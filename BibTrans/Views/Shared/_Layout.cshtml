@@ -30,6 +30,9 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="Index">Panel klienta</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Books">Książki</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Kontakt</a>
                         </li>
                         @if (User.Identity?.IsAuthenticated == true)
@@ -40,13 +43,13 @@
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Panel administracyjny</a>
                                 </li>
                             }
-                            <li class="nav-item ms-auto">
-                                <a class="nav-link text-light btn btn-sm btn-primary me-2" id="logout" asp-area="Identity" asp-page="/Account/Logout">Wyloguj</a>
+                            <li class="nav-item ms-sm-auto">
+                                    <a class="nav-link text-light btn btn-sm btn-primary" id="logout" asp-area="Identity" asp-page="/Account/Logout">Wyloguj</a>
                             </li>
                         } 
                         else {
-                            <li class="nav-item ms-auto">
-                                <a class="nav-link text-light btn btn-sm btn-primary me-2" id="login" asp-area="Identity" asp-page="/Account/Login">Logowanie</a>
+                            <li class="nav-item ms-sm-auto">
+                                    <a class="nav-link text-light btn btn-sm btn-primary mb-2 mb-sm-0 me-sm-2" id="login" asp-area="Identity" asp-page="/Account/Login">Logowanie</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark btn btn-sm btn-outline-primary" id="register" asp-area="Identity" asp-page="/Account/Register">Rejestracja</a>
