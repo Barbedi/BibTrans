@@ -4,7 +4,7 @@
     ViewData["Title"] = "Historia";
 }
 
-<link rel="stylesheet" href="~/css//Views/Admin/Borrowings.css" />
+<link rel="stylesheet" href="~/css/Views/Panel/Borrowings.css" asp-append-version="true" />
 
 <div class="search-wrapper">
     <form class="px-0">
@@ -74,4 +74,6 @@
         </div>
     </div>
 </div>
-<script src="~/js/Views/Admin/borrowings.js"></script>
+@section Scripts {
+    <script src="~/js/Views/Admin/borrowings.js" asp-append-version="true"></script>
+}
