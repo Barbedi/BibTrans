@@ -32,7 +32,7 @@ namespace BibTrans.Areas.Admin.Services
         {
             Section section = document.AddSection();
 
-            // Nagłówek
+            
             var paragraph = section.AddParagraph();
             paragraph.AddText("BibTrans - System do Zarzadzania Biblioteka ");
             paragraph.AddLineBreak();
@@ -43,10 +43,10 @@ namespace BibTrans.Areas.Admin.Services
             paragraph.AddText("Telefon: 123 456 789");
             paragraph.Format.SpaceAfter = 20;
 
-            // Tytuł raportu
+           
             paragraph = section.AddParagraph();
-            int liczbaRaportu = 1;
-            paragraph.AddText($"Raport stanu biblioteki nr {liczbaRaportu}");
+            paragraph.Format.Alignment = ParagraphAlignment.Center;
+            paragraph.AddText($"Raport stanu biblioteki");
             paragraph.Format.Font.Size = 20;
             paragraph.Format.Font.Bold = true;
             paragraph.AddLineBreak();
@@ -54,10 +54,10 @@ namespace BibTrans.Areas.Admin.Services
             paragraph.AddText("Data wygenerowania: " + currentDate);
             paragraph.Format.SpaceAfter = 20;
 
-            // Pobranie książek z bazy danych
+           
             var books = _context.Books.ToList();
 
-            // Tabela książek
+            
             var table = section.AddTable();
             table.Borders.Width = 0.75;
             table.AddColumn("1cm");
@@ -73,18 +73,18 @@ namespace BibTrans.Areas.Admin.Services
             row.Cells[2].AddParagraph("Autor");
             row.Cells[3].AddParagraph("Dostępność");
 
-            // Wypełnienie tabeli danymi z bazy
+            
             for (int i = 0; i < books.Count; i++)
             {
                 var book = books[i];
                 row = table.AddRow();
-                row.Cells[0].AddParagraph((i + 1).ToString()); // Numeracja
+                row.Cells[0].AddParagraph((i + 1).ToString()); 
                 row.Cells[1].AddParagraph(book.Title);
                 row.Cells[2].AddParagraph(book.Autor);
                 row.Cells[3].AddParagraph(book.IsAvailable ? "Tak" : "Nie");
             }
 
-            // Stopka
+            
             paragraph = section.Footers.Primary.AddParagraph();
             paragraph.AddText("BibTrans - System do Zarzadzania Biblioteka · Polska · Wszelkie prawa zastrzeżone ");
             paragraph.Format.Alignment = ParagraphAlignment.Center;
