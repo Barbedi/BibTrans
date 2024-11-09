@@ -1,0 +1,56 @@
+﻿main > section {
+    padding: 2.5rem 4rem;
+}
+
+.books-list {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    gap: 1.8rem;
+}
+
+.book {
+    color: inherit;
+    text-decoration: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 1rem;
+}
+
+.image-wrapper {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+}
+
+.image-wrapper img {
+    display: block;
+    width: auto;
+    height: 14.75rem;
+}
+
+.book-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+    height: 100%;
+    padding: 0 1rem;
+}
+
+.book-description h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.book-description p {
+    margin: 0;
+}
+
+@media screen and (max-width: 425px) {
+    main > section {
+        padding: 1rem;
+    }
+}

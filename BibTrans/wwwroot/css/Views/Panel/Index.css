@@ -2,12 +2,6 @@
     padding: 2rem;
 }
 
-.panel-bg {
-    background-color: #F5F6F8;
-    border-radius: 5px;
-    box-shadow: var(--default-shadow);
-}
-
 input[type="text"],
 select {
     background-color: white;

@@ -53,6 +53,12 @@ body {
     border-radius: 5px;
 }
 
+.panel-bg {
+    background-color: #F5F6F8;
+    border-radius: 5px;
+    box-shadow: var(--default-shadow);
+}
+
 .btn {
     transition: color 300ms ease-out,background-color 300ms ease-out,border-color 300ms ease-out,box-shadow 300ms ease-out;
 }
