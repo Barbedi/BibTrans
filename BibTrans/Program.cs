@@ -1,3 +1,4 @@
+using BibTrans.Areas.Admin.Services;
 using BibTrans.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +7,7 @@ var connectionString = builder.Configuration.GetConnectionString("BibTransContex
 
 builder.Services.AddDbContext<BibTransContext>(options =>
     options.UseSqlServer(connectionString));
+builder.Services.AddScoped<InvoiceService>();
 
 builder.Services.AddIdentity<BibTransUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<BibTransContext>()
