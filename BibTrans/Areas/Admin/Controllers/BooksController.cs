@@ -25,6 +25,9 @@ namespace BibTrans.Areas.Admin.Controllers
         }
 
         // GET: Books/Details/5
+
+        //[Authorize(Roles = "Users")]
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Books == null)
