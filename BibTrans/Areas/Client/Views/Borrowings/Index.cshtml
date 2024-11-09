@@ -1,53 +1,31 @@
 ﻿@model IEnumerable<BibTrans.Models.Borrowing>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Wypożyczenia";
 }
 
-<h1>Index</h1>
+<link rel="stylesheet" href="~/css/Views/Panel/ClientBorrowings.css" asp-append-version="true" />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Book)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BorrowDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ReturnDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Book.Autor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BorrowDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReturnDate)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<section class="panel-bg">
+    <h1>Twoje wypożyczenia</h1>
+    <p>
+        <a asp-area="" asp-action="Books" asp-controller="Home">Wypożycz książkę</a>
+    </p>
+    <div class="borrowings-list">
+        @foreach (var item in Model)
+        {
+            <div class="borrowing">
+                <p title="Tytuł książki">
+                    @Html.DisplayFor(modelItem => item.Book.Title)
+                </p>
+                <p title="Data wypożyczenia">
+                    @Html.DisplayFor(modelItem => item.BorrowDate)
+                </p>
+                <p title="Data zwrotu">
+                    @Html.DisplayFor(modelItem => item.ReturnDate)
+                </p>
+                <a class="btn btn-outline-primary ms-auto" asp-action="Delete" asp-route-id="@item.Id">Zwróć</a>
+            </div>
+        }
+    </div>
+</section>
