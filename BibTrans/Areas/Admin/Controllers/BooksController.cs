@@ -2,7 +2,9 @@
 using BibTrans.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using X.PagedList.Extensions;
 
 namespace BibTrans.Areas.Admin.Controllers
 {
@@ -18,16 +20,17 @@ namespace BibTrans.Areas.Admin.Controllers
         }
 
         // GET: Books
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
             var booksList = await _context.Books.ToListAsync();
-            return View(booksList);
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            var booksListPages = booksList.ToPagedList(pageNumber, pageSize);
+
+            return View(booksListPages);
         }
 
         // GET: Books/Details/5
-
-        //[Authorize(Roles = "Users")]
-
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Books == null)

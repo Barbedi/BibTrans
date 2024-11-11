@@ -37,6 +37,16 @@ body {
     min-height: 100vh;
 }
 
+.pagination {
+    gap: 0.5rem;
+}
+
+.page-item.active .page-link {
+    background-color: var(--alt-color);
+    border-color: var(--alt-color);
+    color: #fff !important;
+}
+
 .navbar {
     box-shadow: var(--default-shadow);
 }
