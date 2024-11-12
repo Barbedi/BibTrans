@@ -1,32 +1,4 @@
-﻿.search-wrapper form {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.7rem;
-}
-
-.search-input {
-    width: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.search-input .form-control {
-    background-color: #F5F6F8;
-}
-
-.search-input label {
-    position: absolute;
-    left: 1rem;
-    cursor: text;
-}
-
-.hidden {
-    display: none;
-}
-
-.content-wrapper {
+﻿.content-wrapper {
     display: flex;
     gap: 1rem;
 }
@@ -71,25 +43,4 @@
 .left-container td:last-child {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-}
-
-.activity {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: var(--default-shadow);
-    padding: 0.8rem;
-}
-
-.activity:not(:last-of-type) {
-    margin-bottom: 1rem;
-}
-
-.activity p {
-    margin-bottom: 0;
-}
-
-.activity .top {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1.25rem;
 }

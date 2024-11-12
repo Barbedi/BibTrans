@@ -152,8 +152,6 @@ section .bottom {
     .functionalities-list {
         flex-direction: row !important;
         flex-wrap: wrap;
-        -webkit-justify-content: center;
-        justify-content: center;
     }
 
     .functionalities-list > li {

@@ -1,10 +1,12 @@
 ﻿using BibTrans.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BibTrans.Areas.Client.Controllers
 {
     [Area("Client")]
+    [Authorize]
     public class BorrowingsController : Controller
     {
         private readonly BibTransContext _context;

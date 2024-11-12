@@ -94,3 +94,23 @@
     display: block;
     margin: 2rem auto;
 }
+
+@media screen and (max-width: 48rem) {
+    main {
+        flex-direction: column;
+    }
+
+    .left-container {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 26.57rem) {
+    main {
+        padding: 1rem;
+    }
+
+    .book-info p {
+        font-size: 0.8rem;
+    }
+}
