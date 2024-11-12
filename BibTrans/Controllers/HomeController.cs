@@ -29,11 +29,6 @@ namespace BibTrans.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         public async Task<IActionResult> Books()
         {
             var booksList = await _context.Books.AsQueryable().Where(item => item.IsAvailable).ToListAsync();
