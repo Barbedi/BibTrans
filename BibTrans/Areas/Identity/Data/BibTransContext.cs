@@ -1,6 +1,4 @@
-﻿using BibTrans.Areas.Identity.Data;
-using BibTrans.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using BibTrans.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -12,8 +10,12 @@ public class BibTransContext : IdentityDbContext<BibTransUser>
     public BibTransContext(DbContextOptions<BibTransContext> options)
         : base(options)
     {
-     }
-   
+    }
+
+     
+    public DbSet<ActivityLogs> ActivityLogs { get; set; }
+
+
     public DbSet<Books> Books { get; set; }
     public DbSet<Borrowing> Borrowings { get; set; }
 
@@ -31,6 +33,10 @@ public class ApplicationUserEntityConfiguration : IEntityTypeConfiguration<BibTr
 {
     public void Configure(EntityTypeBuilder<BibTransUser> builder)
     {
-      
+
+        builder.Property(x=>x.First_name).HasMaxLength(255);
+        builder.Property(x => x.Last_name).HasMaxLength(255);
+
+
     }
 }

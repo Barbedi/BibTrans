@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BibTrans.Models.Borrowing>
+
+@{
+    ViewData["Title"] = "Historia";
+}
+
+<link rel="stylesheet" href="~/css/Views/Panel/Borrowings.css" asp-append-version="true" />
+
+<div class="content-wrapper">
+    <div class="panel-bg left-container">
+        <h6>Ostanie wypożyczenia</h6>
+        <table>
+            <thead>
+                <tr>
+                    <th>ISBN</th>
+                    <th>Email</th>
+                    <th>Data wypożyczenia</th>
+                    <th>Data zwrotu</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @if (item.Book != null && item.User != null)
+                        {
+                            <td>@item.Book.ISBN</td>
+                            <td>@item.User.Email</td>
+                        } 
+                        else
+                        {
+                            <td>N/A</td>
+                            <td>N/A</td>
+                        }
+                        <td>@item.BorrowDate</td>
+                        <td>@item.ReturnDate</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/js/Views/Admin/borrowings.js" asp-append-version="true"></script>
+}

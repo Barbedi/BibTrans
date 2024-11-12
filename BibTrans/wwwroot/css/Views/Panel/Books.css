@@ -1,0 +1,116 @@
+﻿main {
+    width: 100%;
+    display: flex;
+    min-height: calc(100vh - 4rem);
+    gap: 1.2rem;
+}
+
+.left-container {
+    max-width: 30vw;
+    min-width: 20vw;
+}
+
+.right-container {
+    width: 100%;
+    padding: 1.2rem;
+}
+
+.right-container header > div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) 0.35fr auto;
+    -webkit-align-items: center;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.right-container header p {
+    margin-bottom: 0;
+}
+
+.book {
+    box-shadow: var(--default-shadow);
+    border-radius: 5px;
+    background-color: #fff;
+    margin-top: 0.62rem;
+}
+
+.book:first-child {
+    margin-top: 0.3rem;
+}
+
+.book-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) 0.5fr auto;
+    -webkit-align-items: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 1.25rem;
+    gap: 1.2rem;
+}
+
+.book-info p {
+    margin-bottom: 0;
+}
+
+.book-details {
+    padding: 1.25rem;
+    border-top: 1px solid #808080;
+}
+
+.book-details.hidden {
+    display: none;
+}
+
+.book-details > div:first-child {
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-details .icon {
+    cursor: pointer;
+    align-self: center;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem;
+    border: 1px solid transparent;
+    transition: color 300ms ease-out, background-color 300ms ease-out, box-shadow 300ms ease-out, border-color 300ms ease-out;
+}
+
+.book-details .icon:hover {
+    color: var(--primary-color);
+    background-color: var(--default-white);
+    box-shadow: var(--default-shadow);
+    border-color: var(--primary-color);
+}
+
+.no-data {
+    width: fit-content;
+    color: #808080;
+    display: block;
+    margin: 2rem auto;
+}
+
+@media screen and (max-width: 48rem) {
+    main {
+        flex-direction: column;
+    }
+
+    .left-container {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 26.57rem) {
+    main {
+        padding: 1rem;
+    }
+
+    .book-info p {
+        font-size: 0.8rem;
+    }
+}

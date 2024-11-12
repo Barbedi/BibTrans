@@ -1,0 +1,44 @@
+﻿.borrowings-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.borrowing {
+    display: grid;
+    grid-template-columns: .9fr .5fr .5fr 1fr;
+    align-items: center;
+    gap: 8rem;
+    padding: 1rem 2rem;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: var(--default-shadow);
+}
+
+.borrowing p {
+    margin: 0;
+}
+
+.borrowing p:not(:nth-child(2)) {
+    font-weight: 700;
+}
+
+@media screen and (max-width: 64rem) {
+    .borrowing {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4rem;
+    }
+}
+
+@media screen and (max-width: 48rem) {
+    .borrowing {
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 29.5rem) {
+    .borrowing {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+}

@@ -1,0 +1,88 @@
+﻿@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<BibTrans.Models.Books>
+
+@{
+    ViewData["Title"] = "Książki";
+}
+
+<link rel="stylesheet" href="~/css/Views/Panel/Books.css" asp-append-version="true" />
+
+<div class="left-container">
+    @{
+        await Html.RenderPartialAsync("_CreateForm");
+    }
+</div>
+<div class="right-container panel-bg">
+    <header>
+        <h6>Lista książek</h6>
+        <div>
+            <p>Tytuł</p>
+            <p>Autor</p>
+            <p>ISBN</p>
+            <p>Dostępność</p>
+        </div>
+    </header>
+    <div class="books-list-container">
+        @if (!Model.Any())
+        {
+            <p class="no-data">Brak książek</p>
+        }
+        @foreach (var item in Model)
+        {
+            <div class="book">
+                <div class="book-info" data-bookid="@Html.ValueFor(modelItem => item.Id)">
+                    <p>@Html.DisplayFor(modelItem => item.Title)</p>
+                    <p>@Html.DisplayFor(modelItem => item.Autor)</p>
+                    <p>@Html.DisplayFor(modelItem => item.ISBN)</p>
+                    <p>@Html.DisplayFor(modelItem => item.IsAvailable)</p>
+                </div>
+                <div class="book-details hidden">
+                    <div>
+                        <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                        <span class="icon" data-bookid="@Html.ValueFor(modelItem => item.Id)"><i class="fa-solid fa-angle-up"></i></span>
+                    </div>
+                    <div class="book-actions">
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
+                        <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.Id">Szczegóły</a>
+                        <a class="btn btn-danger delete-book" data-bookid="@Html.ValueFor(modelItem => item.Id)">Usuń</a>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="row" style="margin-top:0.62rem;">
+            <div class="col-md-12">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination ">
+
+                        <li class="page-item @(Model.PageNumber == 1 ? "disabled" : "")">
+                            <a class="page-link btn-outline-primary"
+                               href="@(Model.PageNumber > 1 ? Url.Action("Index", new { page = Model.PageNumber - 1 }) : "#")">«</a>
+                        </li>
+
+                        @for (int i = 1; i <= Model.PageCount; i++)
+                        {
+                            <li class="page-item  @(i == Model.PageNumber ? "active" : "")">
+                                <a class="page-link btn-outline-primary"
+                                   href="@(i == Model.PageNumber ? "#" : Url.Action("Index", new { page = i }))">@i</a>
+                            </li>
+                        }
+
+                        <li class="page-item  @(Model.PageNumber == Model.PageCount ? "disabled" : "")">
+                            <a class="page-link  btn-outline-primary"
+                               href="@(Model.PageNumber < Model.PageCount ? Url.Action("Index", new { page = Model.PageNumber + 1 }) : "#")">»</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-wrapper"></div>
+
+@section Scripts {
+    <script src="~/js/Views/Admin/book.js" asp-append-version="true"></script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

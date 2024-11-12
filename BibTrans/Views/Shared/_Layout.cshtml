@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/32373b1277.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -26,20 +27,34 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Strona główna</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Panel klienta</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="Index">Panel klienta</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Kontakt</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Books">Książki</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Books" asp-action="Create">Dodaj Książkę</a>
+                            <a href="/#contact" class="nav-link text-dark">Kontakt</a>
                         </li>
-                        <li class="nav-item ms-auto">
-                            <a class="nav-link text-light btn btn-sm btn-primary me-2" id="login" asp-area="Identity" asp-page="/Account/Login">Logowanie</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark btn btn-sm btn-outline-primary" id="register" asp-area="Identity" asp-page="/Account/Register">Rejestracja</a>
-                        </li>
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Panel administracyjny</a>
+                                </li>
+                            }
+                            <li class="nav-item ms-sm-auto">
+                                    <a class="nav-link text-light btn btn-sm btn-primary" id="logout" asp-area="Identity" asp-page="/Account/Logout">Wyloguj</a>
+                            </li>
+                        } 
+                        else {
+                            <li class="nav-item ms-sm-auto">
+                                    <a class="nav-link text-light btn btn-sm btn-primary mb-2 mb-sm-0 me-sm-2" id="login" asp-area="Identity" asp-page="/Account/Login">Logowanie</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark btn btn-sm btn-outline-primary" id="register" asp-area="Identity" asp-page="/Account/Register">Rejestracja</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -53,7 +68,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - BibTrans - <a class="link-primary" asp-area="" asp-controller="Home" asp-action="Privacy">Polityka prywatności</a>
+            &copy; 2024 - BibTrans
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

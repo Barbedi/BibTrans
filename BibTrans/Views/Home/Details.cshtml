@@ -1,0 +1,43 @@
+﻿@model BibTrans.Models.Books
+
+@{
+    ViewData["Title"] = $"{Model.Title}";
+}
+
+<section>
+    <h1>Szczegóły książki</h1>
+    <div>
+        <h5>@Html.DisplayFor(model => model.Title)</h5>
+        <hr />
+        <dl class="row">
+            <dt>
+                @Html.DisplayNameFor(model => model.Autor)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Autor)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ISBN)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ISBN)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.IsAvailable)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IsAvailable)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a class="btn btn-primary" asp-action="Borrow" asp-route-id="@Model?.Id">Wypożycz</a>
+        <a class="btn btn-outline-primary" asp-action="Books">Powrót do listy</a>
+    </div>
+</section>

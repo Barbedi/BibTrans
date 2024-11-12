@@ -1,0 +1,31 @@
+﻿@model IEnumerable<BibTrans.Models.Borrowing>
+
+@{
+    ViewData["Title"] = "Wypożyczenia";
+}
+
+<link rel="stylesheet" href="~/css/Views/Panel/ClientBorrowings.css" asp-append-version="true" />
+
+<section class="panel-bg">
+    <h1>Twoje wypożyczenia</h1>
+    <p>
+        <a asp-area="" asp-action="Books" asp-controller="Home">Wypożycz książkę</a>
+    </p>
+    <div class="borrowings-list">
+        @foreach (var item in Model)
+        {
+            <div class="borrowing">
+                <p title="Tytuł książki">
+                    @Html.DisplayFor(modelItem => item.Book.Title)
+                </p>
+                <p title="Data wypożyczenia">
+                    @Html.DisplayFor(modelItem => item.BorrowDate)
+                </p>
+                <p title="Data zwrotu">
+                    @Html.DisplayFor(modelItem => item.ReturnDate)
+                </p>
+                <a class="btn btn-outline-primary ms-auto" asp-action="Delete" asp-route-id="@item.Id">Zwróć</a>
+            </div>
+        }
+    </div>
+</section>

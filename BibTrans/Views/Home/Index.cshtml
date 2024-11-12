@@ -108,15 +108,16 @@
         </div>
     </div>
 </section>
-<section class="contact">
+<section class="contact" id="contact">
     <div class="top">
         <h2 class="display-6 m-0">Skontaktuj się z nami</h2>
         <p>
             Masz pytania? Chcesz dowiedzieć się więcej o BibTrans? 
-            Skontaktuj się z nami poprzez formularz lub wyślij wiadomość 
-            na adres email: <a href="mailto:kontakt@bibtrans.com" class="link-primary">kontakt@bibtrans.com</a>.
+            Skontaktuj się z nami poprzez e-mail:
         </p>
-        <a class="btn btn-primary px-5 py-3" style="font-size: 1.25rem;" asp-area="" asp-controller="Home" asp-action="Privacy">Wyślij wiadomość</a>
+        <a href="mailto:kontakt@bibtrans.com" class="btn btn-primary px-5 py-3" style="font-size: 1.25rem;">Wyślij wiadomość</a>
     </div>
 </section>
-<script src="~/js/Views/Home/functionalities.js" asp-append-version="true"></script>
+@section Scripts {
+    <script src="~/js/Views/Home/functionalities.js" asp-append-version="true"></script>
+}
