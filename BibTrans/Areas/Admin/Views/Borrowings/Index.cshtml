@@ -6,15 +6,6 @@
 
 <link rel="stylesheet" href="~/css/Views/Panel/Borrowings.css" asp-append-version="true" />
 
-<div class="search-wrapper">
-    <form class="px-0">
-        <div class="form-group search-input m-0">
-            <label for="searchValue"><i class="fa-solid fa-magnifying-glass"></i> Wyszukaj aktywność/wypożyczenie</label>
-            <input class="form-control" type="search" name="searchValue" />
-        </div>
-        <button class="btn btn-primary" type="submit">Wyszukaj</button>
-    </form>
-</div>
 <div class="content-wrapper">
     <div class="panel-bg left-container">
         <h6>Ostanie wypożyczenia</h6>
@@ -28,50 +19,25 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>978-83-611-0112-5</td>
-                    <td>admin123@onet.pl</td>
-                    <td>2024-01-10</td>
-                    <td>2024-01-24</td>
-                </tr>
-                <tr>
-                    <td>978-83-611-0112-5</td>
-                    <td>admin123@onet.pl</td>
-                    <td>2024-01-10</td>
-                    <td>2024-01-24</td>
-                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @if (item.Book != null && item.User != null)
+                        {
+                            <td>@item.Book.ISBN</td>
+                            <td>@item.User.Email</td>
+                        } 
+                        else
+                        {
+                            <td>N/A</td>
+                            <td>N/A</td>
+                        }
+                        <td>@item.BorrowDate</td>
+                        <td>@item.ReturnDate</td>
+                    </tr>
+                }
             </tbody>
         </table>
-    </div>
-    <div class="panel-bg right-container">
-        <h6>Ostatnia aktywność</h6>
-        <div class="activity">
-            <div class="top">
-                <p>Typ aktywności</p>
-                <p>Data wykonania</p>
-            </div>
-            <div class="bottom">
-                <p>Szczegóły: Użytkownik {email} wypożyczył {tytuł}</p>
-            </div>
-        </div>
-        <div class="activity">
-            <div class="top">
-                <p>Wypożyczenie książki</p>
-                <p>2024-10-29 12:10</p>
-            </div>
-            <div class="bottom">
-                <p>Użytkownik {email} wypożyczył {tytuł}</p>
-            </div>
-        </div>
-        <div class="activity">
-            <div class="top">
-                <p>Typ aktywności</p>
-                <p>Data wykonania</p>
-            </div>
-            <div class="bottom">
-                <p>Szczegóły: Użytkownik {email} wypożyczył {tytuł}</p>
-            </div>
-        </div>
     </div>
 </div>
 @section Scripts {

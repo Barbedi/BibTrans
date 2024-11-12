@@ -22,3 +22,23 @@
 .borrowing p:not(:nth-child(2)) {
     font-weight: 700;
 }
+
+@media screen and (max-width: 64rem) {
+    .borrowing {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4rem;
+    }
+}
+
+@media screen and (max-width: 48rem) {
+    .borrowing {
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 29.5rem) {
+    .borrowing {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+}

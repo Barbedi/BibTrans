@@ -2,6 +2,12 @@
     padding: 2rem;
 }
 
+@media screen and (max-width: 48rem) {
+    main {
+        padding: 1rem;
+    }
+}
+
 input[type="text"],
 select {
     background-color: white;

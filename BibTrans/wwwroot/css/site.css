@@ -28,6 +28,12 @@ main > section {
     padding: 2.5rem 10%;
 }
 
+@media screen and (max-width: 48rem) {
+    main > section {
+        padding: 1rem;
+    }
+}
+
 main h6 {
     font-weight: normal;
     font-size: 1.25rem;
