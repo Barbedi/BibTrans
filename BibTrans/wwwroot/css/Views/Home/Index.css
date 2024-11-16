@@ -175,3 +175,35 @@ section .bottom {
         max-width: 100%;
     }
 }
+
+
+
+@media screen and (max-width: 425px) {
+    main header {
+        height: 40vh;
+    }
+    
+    .functionality-description {
+        padding: 0;
+    }
+    
+    .functionality-keywords {
+        flex-direction: column;
+        padding: 0;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .functionality-keywords > .keyword {
+        width: 100%;
+    }
+    
+    .scalability-cards {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .scalability-card {
+        width: 50%
+    }
+}
