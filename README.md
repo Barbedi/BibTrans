@@ -4,6 +4,8 @@
 
 Aplikacja ma na celu ułatwić bibliotekarzom zarządzanie biblioteką oraz umożliwić klientom łatwy dostęp online do zasobów biblioteki.
 
+[Demo](https://bibtrans20241112222924.azurewebsites.net/)
+
 ## Główne funkcje aplikacji
 
 - System logowania użytkowników
